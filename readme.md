@@ -1,43 +1,42 @@
-## サンプルコード
+## 範例程式
 
-「Kaggleで勝つデータ分析の技術」([amazon](https://www.amazon.co.jp/dp/4297108437)) のサンプルコードです。
+「Kaggle 競賽攻頂秘笈 - 揭開 Grandmaster 的特徵工程心法，掌握制勝的關鍵技術」([amazon](https://www.amazon.co.jp/dp/4297108437)、[旗標](https://www.flag.com.tw/books/product/F1365)) 範例程式。
 
-<img src="misc/cover_small.jpg" width="200">
 
-### 各フォルダの内容
+### 每個資料夾的內容
 
-|フォルダ| 内容 |
+|資料夾 | 内容 |
 |:----|:-------|
-| input | 入力ファイル |
-| ch01 | 第1章のサンプルコード |
-| ch02 | 第2章のサンプルコード |
-| ch03 | 第3章のサンプルコード |
-| ch04 | 第4章のサンプルコード |
-| ch05 | 第5章のサンプルコード |
-| ch06 | 第6章のサンプルコード |
-| ch07 | 第7章のサンプルコード |
-| ch04-model-interface | 第4章の「分析コンペ用のクラスやフォルダの構成」のコード |
+| input | 資料集 |
+| ch01 | 第1章範例程式 |
+| ch02 | 第2章範例程式 |
+| ch03 | 第3章範例程式 |
+| ch04 | 第4章範例程式 |
+| ch05 | 第5章範例程式 |
+| ch06 | 第6章範例程式 |
+| ch07 | 第7章範例程式 |
+| ch04-model-interface | 第4章「用於競賽的 Class 和專案目錄結構」範例程式 |
 
-* 各章のディレクトリをカレントディレクトリとしてコードを実行して下さい。
-* 第1章のタイタニックのデータは、[input/readme.md](input/readme.md) のとおりダウンロード下さい。
-* 第4章の「分析コンペ用のクラスやフォルダの構成」のコードについては、[ch04-model-interface/readme.md](ch04-model-interface) を参照下さい。
+* 以每章的目錄為工作目錄執行程式
+* 請以[input/readme.md](../../Downloads/F1365_sample_code%202/input/readme.md) 說明下載程式
+* 第4章「用於競賽的 Class 和專案目錄結構」範例程式，請山考[ch04-model-interface/readme.md](../../Downloads/F1365_sample_code%202/ch04-model-interface) 
 
 
 ### Requirements
 
-サンプルコードの動作は、Google Cloud Platform(GCP)で確認しています。  
+範例程式已經在 Google Cloud Platform (GCP) 驗證過
 
-環境は以下のとおりです。
+環境如下
 
 * Ubuntu 18.04 LTS  
 * Anaconda 2019.03 Python 3.7
-* 必要なPythonパッケージ（下記スクリプト参照）
+* 必要的 Python 套件
 
-以下のスクリプトのとおりにGCPの環境構築を行っています。
+使用以下方式建立 GCP 環境
 ```
 # utils -----
 
-# 開発に必要なツールをインストール
+# 安裝開方工具
 cd ~/
 sudo apt-get update
 sudo apt-get install -y git build-essential libatlas-base-dev
@@ -45,19 +44,19 @@ sudo apt-get install -y python3-dev
 
 # anaconda -----
 
-# Anacondaをダウンロードしインストール
+# 下載安裝 Anaconda
 mkdir lib
 wget --quiet https://repo.continuum.io/archive/Anaconda3-2019.03-Linux-x86_64.sh -O lib/anaconda.sh
 /bin/bash lib/anaconda.sh -b
 
-# PATHを通す
+# 設定 PATH
 echo export PATH=~/anaconda3/bin:$PATH >> ~/.bashrc
 source ~/.bashrc
 
 # python packages -----
 
-# Pythonパッケージのインストール
-# numpy, scipy, pandasはAnaconda 2019.03のバージョンのまま
+# 安裝 Python 套件
+# numpy, scipy, pandas 還是 Anaconda 2019.03 的版本
 # pip install numpy==1.16.2 
 # pip install scipy==1.2.1 
 # pip install pandas==0.24.2
@@ -74,7 +73,7 @@ pip install umap-learn==0.3.9
 
 # set backend for matplotlib to Agg -----
 
-# GCP上で実行するため、matplotlibのbackendを指定し直す
+# 指定 matplotlib 後端在 GCP 上面執行
 matplotlibrc_path=$(python -c "import site, os, fileinput; packages_dir = site.getsitepackages()[0]; print(os.path.join(packages_dir, 'matplotlib', 'mpl-data', 'matplotlibrc'))") && \
 sed -i 's/^backend      : qt5agg/backend      : agg/' $matplotlibrc_path
 ```
